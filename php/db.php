@@ -2,6 +2,10 @@
 class DB {
 
     private $dbPath = "./db/testing.db";
+
+    function __construct($path = "./db/testing.db") {
+        $this -> dbPath = $path;
+    }
     
     public function insertUser($username, $email, $pwd, $role) {
         $db = new SQLite3($this->dbPath);

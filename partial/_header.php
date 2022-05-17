@@ -1,10 +1,10 @@
 <?php
 
 if (isset($_SESSION["id"])) {
-    $dbConnect = new DB();
-    $user = $dbConnect -> getUserByID($_SESSION["id"])[0];
+    $dbC = new DB();
+    $user = $dbC -> getUserByID($_SESSION["id"])[0];
     $username = $user["username"];
-    $role = $user["role"];
+    // $role = $user["role"];
 }
 echo '<div class="header" id="header">';
 if(!isset($_SESSION["id"])) {

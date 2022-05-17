@@ -1,25 +1,17 @@
-function filterThreads() {
-    //option 
-    //let filteroption = 'thread-' + document.getElementByID('filterOption');
-    const threadcon = document.getElementById('threads');
-    const originalarrthreads = document.getElementByClass('thread-topic');
-    var filteredlist;
-    var filter = document.getElementById('filter').value;
-    if(filter == "") {
-        threadcon.replaceChildren(originalarrthreads);
-        // listofdivs = document.getElementByClass('thread-username');
-    }
-    else {
-        threadcon.replaceChildren(new Array(1));
-        //t.replaceChildren(...new array of elements);
-    //     for(let i = 0; i < listofdivs + 1; i++) {
-    //         if(listofdivs[i].innerText.includes(filter)) {
+function filterThreads(val) {
 
-    //         }
-    //    }
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function() {
+        if (this.readyState==4 && this.status==200) {
+        document.getElementById("thread-container").innerHTML=this.responseText;
+        }
     }
-}
+    getop = "./php/updatethreadlist.php";
+    if(val.length != 0) {
+        getop += "?filter_text=" + val
+    }  
+    xmlhttp.open("GET",getop,true);
+    xmlhttp.send();
 
-function updateThreads() {
-    theDiv.appendChild(content);
+
 }
