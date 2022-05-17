@@ -1,0 +1,118 @@
+* {
+    font-family: Georgia;
+}
+
+body{
+    margin: 0px;
+    background-color: coral;
+}
+
+.loggedInText {
+    margin-right: 80%;
+}
+
+.search-container {
+    min-height: 100px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.search-bar {
+    width: 20%;
+    height: 40px;
+    font-size: x-large;
+}
+
+.header {
+    min-height: 40px;
+    align-items: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+.loginButton {
+    color: rgb(207, 207, 207); 
+    font-size: 16px; 
+    margin-top: 30px;
+    margin-right: 70px;
+    line-height: 16px; 
+    padding: 8px; 
+    border-radius: 10px; 
+    font-family: Georgia, serif; 
+    font-weight: normal; 
+    text-decoration: none; 
+    font-style: normal; 
+    font-variant: normal; 
+    text-transform: none; 
+    background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%); box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; border: 2px solid rgb(28, 110, 164); 
+    display: inline-block;
+}
+.loginButton:hover {
+    background: #1C6EA4; 
+}
+.loginButton:active {
+    background: #144E75; 
+}
+
+.center-flex {
+    min-height: 80vh;
+    align-items: center;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px; 
+}
+
+.thread-container {
+    padding: 8px;
+    margin: 25px;
+    width: 60%;
+    min-height: 100px;
+    background-color: #3c4f62;
+    border-radius: 25px;
+    align-items: left;
+}
+
+.thread {
+    background-color: blueviolet;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.thread-topic {
+    padding-left: 15px;
+}
+
+.thread-username {
+    padding-left: 15px;
+}
+
+a:link {
+    color:rgb(255, 255, 255);
+}
+
+a:visited {
+    color:rgb(188, 188, 188);
+}
+a:active  {
+    color:rgb(188, 188, 188);
+}
+
+a:hover {
+    color:rgb(188, 188, 188);
+}
+
+.element-right > * {
+    float: right;
+}
+
+.footer {
+    min-height: 50px;
+}
