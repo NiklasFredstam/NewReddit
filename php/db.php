@@ -19,7 +19,6 @@ class DB {
             $db->busyTimeout(5000);
             if($stmt->execute()) {
                 $id = $db->lastInsertRowID();
-                echo $id;
             }
         }
         $db->close();
@@ -27,8 +26,22 @@ class DB {
         return $id;
     }
     
-    public function insertThread() {
-    
+    public function insertThread($user_id, $topic, $text) {
+        $db = new SQLite3($this->dbPath);
+        $id = false;
+        $sql = 'INSERT INTO Threads(creator_id,topic,text) VALUES(:user_id,:topic,:text)';
+        if($stmt = $db->prepare($sql)) {
+            $stmt->bindValue(':user_id', $user_id);
+            $stmt->bindValue(':topic', $topic, SQLITE3_TEXT);
+            $stmt->bindValue(':text', $text, SQLITE3_TEXT);
+            $db->busyTimeout(5000);
+            if($stmt->execute()) {
+                $id = $db->lastInsertRowID();
+            }
+        }
+        $db->close();
+        unset($db);
+        return $id;
     }
 
     public function insertComment() {
@@ -37,12 +50,30 @@ class DB {
 
     public function getThreads() {
         $db = new SQLite3($this->dbPath);
-        $sql = 'SELECT thread_id, topic, username
+        $sql = 'SELECT thread_id, topic, text, username
                 FROM Threads
                 INNER JOIN Users 
                 ON Users.user_id = Threads.creator_id;';
         $result = false;
         if($stmt = $db->prepare($sql)) {
+            $db->busyTimeout(5000);
+            if($r = $stmt->execute()) {
+                $result = $this -> resultToArray($r);
+            }
+        }
+        $db -> close();
+        unset($db);
+        return $result;
+    }
+
+    public function getThreadByID($id) {
+        $db = new SQLite3($this->dbPath);
+        $sql = 'SELECT * 
+                FROM Threads 
+                WHERE thread_id=:id;';
+        $result = false;
+        if($stmt = $db->prepare($sql)) {
+            $stmt->bindValue(':id', $id);
             $db->busyTimeout(5000);
             if($r = $stmt->execute()) {
                 $result = $this -> resultToArray($r);

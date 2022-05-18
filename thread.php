@@ -8,8 +8,11 @@ if(!isset($_GET["thread"])) {
 }
 require "./php/models/thread.php";
 require "./php/db.php";
-
-$t_id = $_GET["thread"];
+$dbC = new DB();
+$t = $dbC -> getThreadByID($_GET["thread"]);
+if(sizeof($t) == 0) {
+    header("Location: ./threadnotfound.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +29,7 @@ $t_id = $_GET["thread"];
 
 <body>
     <?php
-    echo $t_id;
+    echo $t[0]["thread_id"];
     ?>
 
 </body>

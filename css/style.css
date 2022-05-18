@@ -31,6 +31,23 @@ body{
     flex-direction: row;
     justify-content: right;
 }
+.new-thread-button {
+    color: rgb(207, 207, 207); 
+    font-size: 16px; 
+    margin-top: 30px;
+    margin-right: 70px;
+    line-height: 16px; 
+    padding: 8px; 
+    border-radius: 10px; 
+    font-family: Georgia, serif; 
+    font-weight: normal; 
+    text-decoration: none; 
+    font-style: normal; 
+    font-variant: normal; 
+    text-transform: none; 
+    background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%); box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; border: 2px solid rgb(28, 110, 164); 
+    display: inline-block;
+}
 
 .loginButton {
     color: rgb(207, 207, 207); 
@@ -57,7 +74,6 @@ body{
 }
 
 .center-flex {
-    min-height: 80vh;
     align-items: center;
     display: flex; 
     flex-direction: column;

@@ -25,19 +25,6 @@ if(isset($_GET["filter_text"])) {
             </a>";
         }
     }
-    // foreach($threads as $t) {
-    //     if(strpos($t['username'], $filter) !== false) {
-    //         $toreturn .=
-    //         "<a class='thread' href='./thread.php?thread=" . $t["thread_id"] . "'>
-    //             <div class='thread-topic'>"
-    //             . $t['topic']
-    //             . "</div>"
-    //             .  "<div class='thread-username'>"
-    //             . $t['username']
-    //             . "</div>
-    //         </a>";
-    //     }
-    // }
 }
 else {
     foreach($threads as $t) {
