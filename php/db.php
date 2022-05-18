@@ -68,8 +68,10 @@ class DB {
 
     public function getThreadByID($id) {
         $db = new SQLite3($this->dbPath);
-        $sql = 'SELECT * 
-                FROM Threads 
+        $sql = 'SELECT thread_id, topic, text, username
+                FROM Threads
+                INNER JOIN Users 
+                ON Users.user_id = Threads.creator_id
                 WHERE thread_id=:id;';
         $result = false;
         if($stmt = $db->prepare($sql)) {

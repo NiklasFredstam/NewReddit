@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 else {
-    if(isset($_SESSION["userid"])) {
+    if(isset($_SESSION["id"])) {
         header("Location: ./index.php");
         exit();
     }
@@ -94,19 +94,24 @@ function registerUser($username,$email,$pwd,$role) {
 </head>
 
 <body>
+
+    <?php include "./partial/_header.php" ?>
+
     <div class="center-flex" id="container">
 
         <form name="registration" action="register.php" onsubmit="checkRegistration()" method="post">
             <label for="username">Username:</label>
             <input type="text" name="username" id="username" placeholder="Enter you prefered username" required minlength="4">
             <label for="email">E-mail:</label>
-            <input type="email" name="email" id="email" placeholder="john@smith.com" required>
+            <input type="email" name="email" id="email" placeholder="jane@doe.com" required>
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" placeholder="Enter a password" pattern="(?=.*\d)(?=.*[a-zåäö])(?=.*[A-ZÅÄÖ]).{8,20}" required title="Must contain at least one numeric value, one lowercase letter and one uppercase letter">
             <input type="submit" value="Send" >
         </form>
 
     </div>
+
+    <?php include "./partial/_footer.php" ?>
 
 </body>
 </html>

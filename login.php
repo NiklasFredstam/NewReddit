@@ -64,6 +64,10 @@ function findUser($username) {
 </head>
 
 <body>
+
+	<?php include "./partial/_header.php" ?>
+
+
     <div class="center-flex" id="container">
         <form name="login" action="login.php" onsubmit="checkLogin()" method="post">
             <label for="username">Username:</label>
@@ -78,6 +82,8 @@ function findUser($username) {
 		}
 		?>
     </div>
+
+	<?php include "./partial/_footer.php" ?>
 
 </body>
 </html>
