@@ -22,35 +22,37 @@ $thread = $thread[0];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href='./css/style.css?v=<?php time() ?>'>
     <script src="./js/ThreadHandler.js"></script>
 
 </head>
 
-<body>
+<body onload="<?php echo 'loadComments(' . $_GET["thread"] . ')' ?>">
 
     <?php include "./partial/_header.php" ?>
 
 
 
     <div class="center-flex">
-        <?php
-        echo $thread["username"];
-        ?>
+
+        <?php echo $thread["username"]; ?>
+
         <div class="comment-container" id="comment-container">
 
+
         </div>
+
         <div class="new-comment-form" id="new-comment-form">
+
         <?php
         if(isset($_SESSION["id"])) {
             echo 
-            '<form name="create-comment" onsubmit="createComment()">
-                    <label for="comment">Comment:</label>
-                    <input type="text" name="comment" id="comment-input" placeholder="Write your comment here..." required minlength="2" title="Required">
-                    <input type="submit" value="Send" >
-            </form>';
+            '<label for="comment">Comment:</label>
+            <input type="text" name="comment" id="comment-input" placeholder="Write your comment here..." required minlength="2" title="Required">
+            <input type="button" onclick="insertComment(' . $_GET["thread"] . ')" value="Send" >';
         }
         ?>
+        
         </div>
     </div>
 

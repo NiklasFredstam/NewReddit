@@ -8,7 +8,10 @@ if($_SERVER["REQUEST_METHOD"] != "POST" && !isset($_SESSION["id"])) {
 }
 require "./db.php";
 $dbC = new DB("../db/testing.db");
-if($id = $dbC -> insertThread($_SESSION["id"],$_POST["topic"],$_POST["text"])) {
+if($id = $dbC -> insertComment($_SESSION["id"],$_POST["topic"],$_POST["text"])) {
     header("Location: ../thread.php?thread=" . $id);
+}
+else {
+    header("Location: ../index.php");
 }
 ?>

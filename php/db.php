@@ -44,9 +44,44 @@ class DB {
         return $id;
     }
 
-    public function insertComment() {
-    
+    public function insertComment($thread_id, $user_id, $text) {
+        $db = new SQLite3($this->dbPath);
+        $id = false;
+        $sql = 'INSERT INTO Comments(thread_id,user_id,text) VALUES(:thread_id,:user_id,:text)';
+        if($stmt = $db->prepare($sql)) {
+            $stmt->bindValue(':thread_id', $thread_id);
+            $stmt->bindValue(':user_id', $user_id);
+            $stmt->bindValue(':text', $text, SQLITE3_TEXT);
+            $db->busyTimeout(5000);
+            if($stmt->execute()) {
+                $id = $db->lastInsertRowID();
+            }
+        }
+        $db->close();
+        unset($db);
+        return $id;
     }
+
+    public function getCommentsByThread($id) {
+        $db = new SQLite3($this->dbPath);
+        $sql = 'SELECT text, username
+                FROM Comments
+                INNER JOIN Users 
+                ON Users.user_id = Comments.user_id
+                WHERE thread_id=:id;';
+        $result = false;
+        if($stmt = $db->prepare($sql)) {
+            $stmt->bindValue(':id', $id);
+            $db->busyTimeout(5000);
+            if($r = $stmt->execute()) {
+                $result = $this -> resultToArray($r);
+            }
+        }
+        $db -> close();
+        unset($db);
+        return $result;
+    }
+
 
     public function getThreads() {
         $db = new SQLite3($this->dbPath);
