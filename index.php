@@ -1,10 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-require "./php/db.php";
-$dbC = new DB();
+include "./php/bootstrap.php";
 ?>
 
 <!DOCTYPE html>

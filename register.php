@@ -1,16 +1,10 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-else {
-    if(isset($_SESSION["id"])) {
-        header("Location: ./index.php");
-        exit();
-    }
-}
+include "./php/bootstrap.php";
 
-require "./php/db.php";
-
+if(isset($_SESSION["id"])) {
+    header("Location: ./index.php");
+    exit();
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     validateAndRegister();
 }
@@ -38,23 +32,19 @@ function validateAndRegister() {
         echo '<p>Incorrect registration details!</p>';
     }
 }
-
 function validateUsername($username){
 	if(strlen(trim($username)) > 3)
 		return true;
 	return false;
 }
-
 function validateEmail($email){
 	$email = filter_var($email, FILTER_SANITIZE_EMAIL);
 	return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
-
 function validatePassword($password){
 	$pattern="/(?=.*\d)(?=.*[a-zåäö])(?=.*[A-ZÅÄÖ]).{8,}/";
 	return preg_match($pattern, $password);
 }
-
 function emailBusy($email) {
     $dbConnect = new DB();
     if($a = $dbConnect -> getUserByEmail($email)) {
@@ -63,7 +53,6 @@ function emailBusy($email) {
     else 
         return false;
 }
-
 function usernameBusy($username) {
     $dbConnect = new DB();
     if($a = $dbConnect -> getUserByUsername($username)) {
@@ -72,13 +61,11 @@ function usernameBusy($username) {
     else 
         return false;
 }
-
 function registerUser($username,$email,$pwd,$role) {
     $dbConnect = new DB();
     $hashedpwd = password_hash($pwd,PASSWORD_DEFAULT);
     $_SESSION["id"] = $dbConnect -> insertUser($username,$email,$hashedpwd,$role);
 }
-
 ?>
 
 <!DOCTYPE html>

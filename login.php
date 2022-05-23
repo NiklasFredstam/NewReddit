@@ -1,21 +1,14 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-else {
-    if(isset($_SESSION["id"])) {
-        header("Location: ./index.php");
-        exit();
-    }
-}
 
-$loginerror;
-require "./php/db.php";
+include "./php/bootstrap.php";
+if(isset($_SESSION["id"])) {
+	header("Location: ./index.php");
+	exit();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	checkLogin();
 }
-
 function checkLogin() {
 	$username = trim($_POST['username']);
 	$pwd = trim($_POST['password']);
@@ -34,7 +27,6 @@ function checkLogin() {
 		$loginerror = '<p>No user registered for this username!</p>';
 	}
 }
-
 function findUser($username) {
 	$dbConnect = new DB();
 	$userArr = $dbConnect -> getUserByUsername($username);
@@ -48,7 +40,6 @@ function findUser($username) {
 		return false;
 	}
 }
-
 ?>
 
 <!DOCTYPE html>

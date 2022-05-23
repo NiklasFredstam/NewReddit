@@ -1,9 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-require "./php/db.php";
+include "./php/bootstrap.php";
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +23,7 @@ require "./php/db.php";
     </div>
     
     <div class="center-flex">
-        <img src="./img/sadman.jpg" alt="Disappointed man" width="500" height="600"> 
+        <img src="./img/sadman.webp" alt="Disappointed man" width="500" height="600"> 
     </div>
     <div>
         <a href="./index.php">Back to start</a>

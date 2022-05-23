@@ -1,16 +1,21 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+include "./php/bootstrap.php";
+$dbC = new DB();
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["id"])) {
+    if($id = $dbC -> insertThread($_SESSION["id"],$_POST["topic"],$_POST["text"],date("Y-m-d H:i"))) {
+        header("Location: ./thread.php?thread=" + $id);
+        exit();
+    }
 }
 if(!isset($_GET["thread"])) {
     header("Location: ./threadnotfound.php");
     exit();
 }
-require "./php/db.php";
 $dbC = new DB();
 $thread = $dbC -> getThreadByID($_GET["thread"]);
 if(sizeof($thread) == 0) {
     header("Location: ./threadnotfound.php");
+    exit();
 }
 $thread = $thread[0];
 ?>
@@ -35,7 +40,13 @@ $thread = $thread[0];
 
     <div class="center-flex">
 
-        <?php echo $thread["username"]; ?>
+        <div class="original-post">
+            <?php echo $thread["username"] 
+            . "</br>" 
+            . $thread["topic"]
+            . "</br>"
+            . $thread["text"]; ?>
+        </div>
 
         <div class="comment-container" id="comment-container">
 

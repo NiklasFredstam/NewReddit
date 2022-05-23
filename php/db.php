@@ -1,10 +1,11 @@
 <?php
 class DB {
 
-    private $dbPath = "./db/testing.db";
+    private $dbPath;
+    private $dbName = "newreddit.db";
 
-    function __construct($path = "./db/testing.db") {
-        $this -> dbPath = $path;
+    function __construct($path = "./db/") {
+        $this -> dbPath = $path . $this->dbName;
     }
     
     public function insertUser($username, $email, $pwd, $role) {
@@ -26,14 +27,15 @@ class DB {
         return $id;
     }
     
-    public function insertThread($user_id, $topic, $text) {
+    public function insertThread($user_id, $topic, $text, $date) {
         $db = new SQLite3($this->dbPath);
         $id = false;
-        $sql = 'INSERT INTO Threads(creator_id,topic,text) VALUES(:user_id,:topic,:text)';
+        $sql = 'INSERT INTO Threads(user_id,topic,text,date_created) VALUES(:user_id,:topic,:text,:date)';
         if($stmt = $db->prepare($sql)) {
             $stmt->bindValue(':user_id', $user_id);
             $stmt->bindValue(':topic', $topic, SQLITE3_TEXT);
             $stmt->bindValue(':text', $text, SQLITE3_TEXT);
+            $stmt->bindValue(':date', $date, SQLITE3_TEXT);
             $db->busyTimeout(5000);
             if($stmt->execute()) {
                 $id = $db->lastInsertRowID();
@@ -44,14 +46,15 @@ class DB {
         return $id;
     }
 
-    public function insertComment($thread_id, $user_id, $text) {
+    public function insertComment($thread_id, $user_id, $text, $date) {
         $db = new SQLite3($this->dbPath);
         $id = false;
-        $sql = 'INSERT INTO Comments(thread_id,user_id,text) VALUES(:thread_id,:user_id,:text)';
+        $sql = 'INSERT INTO Comments(thread_id,user_id,text,date_created) VALUES(:thread_id,:user_id,:text,:date)';
         if($stmt = $db->prepare($sql)) {
             $stmt->bindValue(':thread_id', $thread_id);
             $stmt->bindValue(':user_id', $user_id);
             $stmt->bindValue(':text', $text, SQLITE3_TEXT);
+            $stmt->bindValue(':date', $date, SQLITE3_TEXT);
             $db->busyTimeout(5000);
             if($stmt->execute()) {
                 $id = $db->lastInsertRowID();
@@ -64,7 +67,7 @@ class DB {
 
     public function getCommentsByThread($id) {
         $db = new SQLite3($this->dbPath);
-        $sql = 'SELECT text, username
+        $sql = 'SELECT text, username, date_created
                 FROM Comments
                 INNER JOIN Users 
                 ON Users.user_id = Comments.user_id
@@ -85,10 +88,10 @@ class DB {
 
     public function getThreads() {
         $db = new SQLite3($this->dbPath);
-        $sql = 'SELECT thread_id, topic, text, username
+        $sql = 'SELECT thread_id, topic, text, username, date_created
                 FROM Threads
                 INNER JOIN Users 
-                ON Users.user_id = Threads.creator_id;';
+                ON Users.user_id = Threads.user_id;';
         $result = false;
         if($stmt = $db->prepare($sql)) {
             $db->busyTimeout(5000);
@@ -103,10 +106,10 @@ class DB {
 
     public function getThreadByID($id) {
         $db = new SQLite3($this->dbPath);
-        $sql = 'SELECT thread_id, topic, text, username
+        $sql = 'SELECT thread_id, topic, text, username, date_created
                 FROM Threads
                 INNER JOIN Users 
-                ON Users.user_id = Threads.creator_id
+                ON Users.user_id = Threads.user_id
                 WHERE thread_id=:id;';
         $result = false;
         if($stmt = $db->prepare($sql)) {

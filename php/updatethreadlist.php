@@ -1,6 +1,6 @@
 <?php
 require "./db.php";
-$dbC = new DB("../db/testing.db");
+$dbC = new DB("../db/");
 $toreturn = "";
 
 $threads = $dbC -> getThreads();
@@ -11,7 +11,6 @@ if($threads === false) {
 }
 if(isset($_GET["filter_text"])) {
     $filter = $_GET["filter_text"];
-    // $filterOp = $_GET["filter_option"];
     foreach($threads as $t) {
         if(strpos($t['topic'], $filter) !== false) {
             $toreturn .=
@@ -21,6 +20,9 @@ if(isset($_GET["filter_text"])) {
                 . "</div>"
                 .  "<div class='thread-username'>"
                 . $t['username']
+                . "</div>"
+                .  "<div class='thread-date'>"
+                . $t['date_created']
                 . "</div>
             </a>";
         }

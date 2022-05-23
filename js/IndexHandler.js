@@ -27,3 +27,15 @@ function createThreadForm() {
     xmlhttp.open("GET",getop,true);
     xmlhttp.send();
 }
+
+function checkThread() {
+    let form = document.forms['create-thread'];
+    let topic = form['topic'].value;
+    let text = form['text'].value;
+    if(topic.length > 8){
+        return true;
+    }
+    let error= "";
+    alert(error)
+    return false;
+}
