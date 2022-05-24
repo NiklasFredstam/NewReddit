@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once "./db.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    checkLogin();
+    checkAndTryLogin();
 }
 
 if(!isset($_GLOBALS["errormsg"])) {
@@ -14,35 +14,36 @@ if(!isset($_GLOBALS["errormsg"])) {
 
 header("Location: ../login.php?errormsg=" . $_GLOBALS["errormsg"]);
 
-function checkLogin() {
-	$username = trim($_POST['username']);
-	$pwd = trim($_POST['password']);
-	$userArr = findUser($username);
+function checkAndTryLogin() {
+	$userArr = findUser();
 	if($userArr !== false) {
-		if(password_verify($pwd,$userArr[0]["password"])) {
-			$_SESSION["id"] = $userArr[0]["user_id"];
-			header("Location: ../index.php");
-			exit();
-		}
-		else {
-			$_GLOBALS["errormsg"] = 'Incorrect login credentials';
-		}
+		tryLogin($userArr[0]);
 	}
 	else {
 		$_GLOBALS["errormsg"] = 'No user registered for this username or email';
 	}
 }
-function findUser($username) {
+function findUser() {
 	$dbConnect = new DB("../db/");
-	$userArr = $dbConnect -> getUserByUsername($username);
+	$userArr = $dbConnect -> getUserByUsername(trim($_POST['username']));
 	if(sizeof($userArr) != 1) {
-		$userArr = $dbConnect -> getUserByEmail($username);
+		$userArr = $dbConnect -> getUserByEmail(trim($_POST['username']));
 	}
 	if(sizeof($userArr) == 1) {
 		return $userArr;
 	}
 	else {
 		return false;
+	}
+}
+function tryLogin($user) {
+	if(password_verify(trim($_POST['password']),$user["password"])) {
+		$_SESSION["id"] = $user["user_id"];
+		header("Location: ../index.php");
+		exit();
+	}
+	else {
+		$_GLOBALS["errormsg"] = 'Incorrect login credentials';
 	}
 }
 ?>

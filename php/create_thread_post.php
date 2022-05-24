@@ -18,7 +18,7 @@ header("Location: ../index.php");
 exit();
 
 function validateThread() {
-    return true;
+    return strlen($_POST["topic"]) > 8 && strlen($_POST["text"]) < 500;
 }
 
 ?>

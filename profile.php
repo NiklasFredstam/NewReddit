@@ -30,7 +30,12 @@ if($user = $dbC -> getUserByID($_SESSION["id"])){
     include "./partial/_header.php";
     ?>
     <div class="center-flex">
-        <form name="edit-user-info" action="./php/update_user_info_post.php" onsubmit="checkUserInfo()" id="edit-user-info" method="post">
+        <?php
+        if(isset($_GET["msg"])) {
+            echo $_GET["msg"];
+        }
+        ?>
+        <form name="edit-user-info" action="./php/update_user_info_post.php" onsubmit="validateUserInfo()" id="edit-user-info" method="post">
             <label for="username">Username:</label>
             <input type="text" value="<?php echo  $username ?>" id="username" name="username" disabled><br><br>
             <label for="email">Email:</label>

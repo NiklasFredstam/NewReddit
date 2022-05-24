@@ -32,10 +32,16 @@ function checkThread() {
     let form = document.forms['create-thread'];
     let topic = form['topic'].value;
     let text = form['text'].value;
-    if(topic.length > 8){
+    let error = "";
+    if(topic.length >= 8 && text.lengt <= 500){
         return true;
     }
-    let error= "";
+    if(topic.length < 8) {
+        error = "Title must be at least 8 characters long";
+    }
+    if(text.length > 500) {
+        error = "Thread text can't be longer than 500 characters";
+    }
     alert(error)
     return false;
 }

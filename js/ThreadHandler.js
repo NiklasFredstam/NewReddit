@@ -34,11 +34,16 @@ function loadComments(id) {
 
 function validateComment() {
     let form = document.forms['create-comment'];
-    let text = form['text'].value;
-    if(text.length > 2){
+    let text = form['comment'].value;
+    let error = "";
+    if(text.length >= 2 && text.length <= 500){
         return true;
     }
-    let error= "";
+    if(text.length < 2) {
+        error= "Comment can't be less than two characters";
+    }
+    if(text.length > 500)
+    error= "Comment can't be more than 500 characters long";
     alert(error)
     return false;
 }
