@@ -37,6 +37,9 @@ else {
                 . "</div>"
                 .  "<div class='thread-username'>"
                 . $t['username']
+                . "</div>"
+                .  "<div class='thread-date'>"
+                . $t['date_created']
                 . "</div>
             </a>";
     }
