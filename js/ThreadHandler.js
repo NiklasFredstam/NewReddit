@@ -1,24 +1,25 @@
-function insertComment(id) {
-
+function insertComment() {
+    let id = document.getElementById("thread-id").value;
     let text = document.getElementById("comment-input").value;
-    if(validateComment(text)) {
-        var xmlhttp=new XMLHttpRequest();
-        xmlhttp.onreadystatechange=function() {
-            if (this.readyState==4 && this.status==200) {
-            document.getElementById("comment-container").innerHTML += this.responseText;
-            }
+    let xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function() {
+        if (this.readyState==4 && this.status==200) {
+        document.getElementById("comment-container").innerHTML += this.responseText;
         }
-        getop = "./php/create_comment.php?thread=" + id + "&text=" + text;
-        xmlhttp.open("GET",getop,true);
-        xmlhttp.send();
-
-        loadComments(id);
     }
+    getop = "./php/create_comment.php?thread=" + id + "&text=" + text;
+    xmlhttp.open("GET",getop,true);
+    xmlhttp.send();
+
+    sleep(2000).then(() => {
+        loadComments(id)
+    });
+
 }
 
 function loadComments(id) {
 
-    var xmlhttp=new XMLHttpRequest();
+    let xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function() {
         if (this.readyState==4 && this.status==200) {
         document.getElementById("comment-container").innerHTML = this.responseText;
@@ -31,7 +32,17 @@ function loadComments(id) {
 
 }
 
-function validateComment(text) {
-    //not
-    return true;
+function validateComment() {
+    let form = document.forms['create-comment'];
+    let text = form['text'].value;
+    if(text.length > 2){
+        return true;
+    }
+    let error= "";
+    alert(error)
+    return false;
+}
+
+function sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
 }

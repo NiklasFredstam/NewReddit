@@ -4,7 +4,6 @@ if (isset($_SESSION["id"])) {
     $dbC = new DB();
     $user = $dbC -> getUserByID($_SESSION["id"])[0];
     $username = $user["username"];
-    // $role = $user["role"];
 }
 
 echo 
@@ -31,7 +30,9 @@ if(!isset($_SESSION["id"])) {
 }
 else {
         echo 
-        '<p class="loggedInText">Nice to see you ' . $username . '</p>';
+        '<p class="loggedInText">Nice to see you 
+        <a href="./profile.php">' . $username . '</a>
+        </p>';
         echo 
         '<form>
             <button class="loginButton" formaction="./php/logout_process.php">Logout</button>

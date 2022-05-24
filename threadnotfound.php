@@ -6,6 +6,7 @@ include "./php/bootstrap.php";
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -23,6 +24,7 @@ include "./php/bootstrap.php";
     </div>
     
     <div class="center-flex">
+        This thread doesn't seem to exist...
         <img src="./img/sadman.webp" alt="Disappointed man" width="500" height="600"> 
     </div>
     <div>

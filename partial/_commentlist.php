@@ -1,5 +1,5 @@
 <?php
-require "../php/db.php";
+require_once "../php/db.php";
 $dbC = new DB("../db/");
 $toecho = "";
 if($comments = $dbC -> getCommentsByThread($_GET["thread"])) {

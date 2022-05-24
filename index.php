@@ -11,7 +11,6 @@ include "./php/bootstrap.php";
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href='./css/style.css?v=43<?php time() ?>'>
     <script src="./js/IndexHandler.js"></script>	
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>	
 </head>
 
 <body onload="filterThreads('')">

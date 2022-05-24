@@ -6,7 +6,7 @@ function filterThreads(val) {
         document.getElementById("thread-container").innerHTML=this.responseText;
         }
     }
-    getop = "./php/updatethreadlist.php";
+    getop = "./php/update_thread_list.php";
     if(val.length != 0) {
         getop += "?filter_text=" + val
     }  
@@ -23,7 +23,7 @@ function createThreadForm() {
         document.getElementById("create-thread").innerHTML=this.responseText;
         }
     }
-    getop = "./php/create_thread.php";
+    getop = "./partial/_threadform.php";
     xmlhttp.open("GET",getop,true);
     xmlhttp.send();
 }

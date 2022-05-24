@@ -1,12 +1,5 @@
 <?php
 include "./php/bootstrap.php";
-$dbC = new DB();
-if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["id"])) {
-    if($id = $dbC -> insertThread($_SESSION["id"],$_POST["topic"],$_POST["text"],date("Y-m-d H:i"))) {
-        header("Location: ./thread.php?thread=" + $id);
-        exit();
-    }
-}
 if(!isset($_GET["thread"])) {
     header("Location: ./threadnotfound.php");
     exit();
@@ -18,6 +11,7 @@ if(sizeof($thread) == 0) {
     exit();
 }
 $thread = $thread[0];
+
 ?>
 
 <!DOCTYPE html>
@@ -29,10 +23,9 @@ $thread = $thread[0];
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href='./css/style.css?v=<?php time() ?>'>
     <script src="./js/ThreadHandler.js"></script>
-
 </head>
 
-<body onload="<?php echo 'loadComments(' . $_GET["thread"] . ')' ?>">
+<body onload="<?php echo 'loadComments(' . $_GET["thread"] . ')'; ?>">
 
     <?php include "./partial/_header.php" ?>
 
@@ -56,11 +49,13 @@ $thread = $thread[0];
         <div class="new-comment-form" id="new-comment-form">
 
         <?php
+
         if(isset($_SESSION["id"])) {
             echo 
             '<label for="comment">Comment:</label>
+            <input type="hidden" name="thread-id" id="thread-id" value="' . $_GET["thread"] . '">
             <input type="text" name="comment" id="comment-input" placeholder="Write your comment here..." required minlength="2" title="Required">
-            <input type="button" onclick="insertComment(' . $_GET["thread"] . ')" value="Send" >';
+            <input type="button" value="Send" onclick="insertComment()">';
         }
         ?>
         
