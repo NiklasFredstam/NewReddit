@@ -46,7 +46,7 @@ else {
 }
 
 if($toreturn == "") {
-    $toreturn = "No matching threads! :(";
+    $toreturn = "<p class='no-match-message'>No matching threads! :(</p>";
 }
 
 echo $toreturn;

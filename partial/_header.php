@@ -8,34 +8,41 @@ if (isset($_SESSION["id"])) {
 
 echo 
 '<div class="header" id="header">';
+echo 
+    '<div class="header-div first">';
+if(isset($_SESSION["id"])) {
+    echo 
+        'Nice to see you ' 
+        . $username 
+        . '!
+        <a class="profile-link" href="./profile.php">SETTINGS</a>';
+}
+echo 
+    '</div>';
 
 echo 
-    '<div class="logo">
+    '<div class="header-div">
         <a class="logo-link" href="./index.php">
         THE NEW REDDIT
         </a>
     </div>';
 
 echo 
-    '<div class="login-buttons">';
+    '<div class="header-div">';
 
 if(!isset($_SESSION["id"])) {
     echo 
         '<form>
-            <button class="loginButton" formaction="./login.php">Login</button>
+            <button class="header-button" formaction="./login.php">Login</button>
         </form>
         <form>
-            <button class="loginButton" formaction="./register.php">Register</button>
+            <button class="header-button" formaction="./register.php">Register</button>
         </form>';
 }
 else {
         echo 
-        '<p class="loggedInText">Nice to see you 
-        <a href="./profile.php">' . $username . '</a>
-        </p>';
-        echo 
         '<form>
-            <button class="loginButton" formaction="./php/logout_process.php">Logout</button>
+            <button class="header-button" formaction="./php/logout_process.php">Logout</button>
         </form>';
 }
 

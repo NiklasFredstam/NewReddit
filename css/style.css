@@ -4,10 +4,59 @@
 
 body{
     margin: 0px;
-    background-color: coral;
+    background-color: rgb(146, 166, 252);
 }
 
-.loggedInText {
+.header {
+    min-height: 140px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.header-div {
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-div.first {
+    flex-direction: column;
+}
+
+.profile-link {
+    color: rgb(223, 223, 223) !important; 
+}
+.logo-link {
+    font-size: 50px; 
+    color: rgb(0, 0, 0) !important; 
+}
+
+.header-button {
+    color: rgb(207, 207, 207); 
+    font-size: 16px; 
+    line-height: 16px; 
+    padding: 10px; 
+    box-shadow: rgb(0, 0, 0) 3px 3px 6px 3px;
+    border-radius: 200px; 
+    font-family: Georgia, serif; 
+    font-weight: normal; 
+    text-decoration: none; 
+    font-style: normal; 
+    font-variant: normal; 
+    text-transform: none; 
+    background-image: linear-gradient(to right, rgb(91, 129, 255) 0%, rgb(114, 151, 253) 50%, rgb(20, 78, 117) 100%); 
+    box-shadow: rgb(0, 0, 0) 3px 3px 8px 3px; 
+    border: 1px solid rgb(28, 110, 164); 
+    display: inline-block;
+}
+.header-button:hover {
+    background: #1C6EA4; 
+}
+.header-button:active {
+    background: #144E75; 
 }
 
 .search-container {
@@ -23,15 +72,6 @@ body{
     font-size: x-large;
 }
 
-.header {
-    min-height: 40px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: nowrap;
-}
-
 a {
     text-decoration: none;
 }
@@ -39,48 +79,22 @@ a {
 .new-thread-button {
     color: rgb(207, 207, 207); 
     font-size: 16px; 
-    margin-top: 30px;
-    margin-right: 70px;
     line-height: 16px; 
-    padding: 8px; 
-    border-radius: 10px; 
+    padding: 10px; 
+    box-shadow: rgb(0, 0, 0) 3px 3px 6px 3px;
+    border-radius: 200px; 
     font-family: Georgia, serif; 
     font-weight: normal; 
     text-decoration: none; 
     font-style: normal; 
     font-variant: normal; 
     text-transform: none; 
-    background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%); box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; border: 2px solid rgb(28, 110, 164); 
+    background-image: linear-gradient(to right, rgb(91, 129, 255) 0%, rgb(114, 151, 253) 50%, rgb(20, 78, 117) 100%); 
+    box-shadow: rgb(0, 0, 0) 3px 3px 8px 3px; 
+    border: 1px solid rgb(28, 110, 164); 
     display: inline-block;
 }
 
-.login-buttons {
-    justify-self: right;
-}
-
-.loginButton {
-    color: rgb(207, 207, 207); 
-    font-size: 16px; 
-    margin-top: 30px;
-    margin-right: 70px;
-    line-height: 16px; 
-    padding: 8px; 
-    border-radius: 10px; 
-    font-family: Georgia, serif; 
-    font-weight: normal; 
-    text-decoration: none; 
-    font-style: normal; 
-    font-variant: normal; 
-    text-transform: none; 
-    background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%); box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; border: 2px solid rgb(28, 110, 164); 
-    display: inline-block;
-}
-.loginButton:hover {
-    background: #1C6EA4; 
-}
-.loginButton:active {
-    background: #144E75; 
-}
 
 .center-flex {
     align-items: center;
@@ -92,32 +106,52 @@ a {
 
 .thread-container {
     padding: 8px;
-    margin: 25px;
     width: 60%;
-    min-height: 100px;
-    background-color: #3c4f62;
+    min-height: 15px;
+    background-color: #2b2b2b;
     border-radius: 25px;
+    display: flex;
+    flex-direction: column-reverse;
     align-items: left;
 }
 
 .thread {
-    background-color: blueviolet;
+    background-color: rgb(91, 129, 255);
+    color: rgb(207, 207, 207) !important; 
     padding: 5px;
+    width: 99%;
+    margin-top: 3px;
+    margin-bottom: 3px;
     border-radius: 10px;
     text-decoration: none;
-    margin-top: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
+    justify-content: left;
 }
 
 .thread-topic {
+    font-size: 19px; 
+    width: 75%;
     padding-left: 15px;
+    justify-self: right;
 }
 
 .thread-username {
+    width: 15%;
+    padding-left: 15px;
+    justify-self: right;
+}
+.thread-date {
+    width: 10%;
     padding-left: 15px;
 }
+
+.no-match-message {
+    font-size: 19px;
+    color: rgb(207, 207, 207);  
+}
+
 
 a:link {
     color:rgb(255, 255, 255);
