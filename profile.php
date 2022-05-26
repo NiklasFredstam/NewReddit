@@ -20,7 +20,7 @@ if($user = $dbC -> getUserByID($_SESSION["id"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href='./css/style.css?v=43<?php time() ?>'>
+    <link rel="stylesheet" type="text/css" href='./css/style.css?v=<?php rand() ?>'>
     <script src="./js/ProfileHandler.js"></script>
 </head>
 
@@ -35,18 +35,23 @@ if($user = $dbC -> getUserByID($_SESSION["id"])){
             echo $_GET["msg"];
         }
         ?>
-        <form name="edit-user-info" action="./php/update_user_info_post.php" onsubmit="validateUserInfo()" id="edit-user-info" method="post">
-            <label for="username">Username:</label>
-            <input type="text" value="<?php echo  $username ?>" id="username" name="username" disabled><br><br>
-            <label for="email">Email:</label>
-            <input type="text" value="<?php echo  $email ?>" id="email" name="email" disabled><br><br>
-            <label for="new-password">Password:</label>
-            <input type="password" value="" id="old-password" name="old-password" disabled><br><br>
-            <label for="old-password">New Password:</label>
-            <input type="password" value="" id="new-password" name="new-password" disabled><br><br>
-            <button type="button" id="edit-button" onclick="activateForm()">Edit</button>
-            <input type="submit" id="submitbutton" value="Save Changes" disabled><br><br>
-        </form>
+        <div class="user-form">
+            <div class="form-labels">
+                <label class="form-label" for="username">Username:</label>
+                <label class="form-label" for="email">Email:</label>
+                <label class="form-label" for="new-password">Password:</label>
+                <label class="form-label" for="old-password">New Password:</label>
+            </div>
+            <form name="edit-user-info" class="edit-user-form" action="./php/update_user_info_post.php" onsubmit="validateUserInfo()" id="edit-user-info" method="post">
+                <input class="user-form-input" type="text" value="<?php echo  $username ?>" id="username" name="username" disabled="true">
+                <input class="user-form-input" type="text" value="<?php echo  $email ?>" id="email" name="email" disabled="true">
+                <input class="user-form-input" type="password" value="" id="old-password" name="old-password" disabled="true">
+                <input class="user-form-input" type="password" value="" id="new-password" name="new-password" disabled="true">
+                <button type="button" class="standard-button small" id="edit-button" onclick="activateForm()">Edit</button>
+                <input type="submit" class="disabled-button large" id="submit-button" value="Save Changes" disabled>
+            </form>
+        </div>
+
     </div>
 
     <?php include "./partial/_footer.php" ?>

@@ -21,7 +21,7 @@ echo
     '</div>';
 
 echo 
-    '<div class="header-div">
+    '<div class="header-div second">
         <a class="logo-link" href="./index.php">
         THE NEW REDDIT
         </a>
@@ -50,5 +50,6 @@ else {
     '</div>';
 
 echo 
-'</div>';
+'</div>
+<hr class="header-line">';
 ?>

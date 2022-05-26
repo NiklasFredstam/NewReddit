@@ -21,7 +21,7 @@ $thread = $thread[0];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href='./css/style.css?v=<?php time() ?>'>
+    <link rel="stylesheet" type="text/css" href='./css/style.css?v=4<?php rand() ?>'>
     <script src="./js/ThreadHandler.js"></script>
 </head>
 
@@ -34,32 +34,44 @@ $thread = $thread[0];
     <div class="center-flex">
 
         <div class="original-post">
-            <?php echo $thread["username"] 
-            . "</br>" 
-            . $thread["topic"]
-            . "</br>"
-            . $thread["text"]; ?>
+
+            <div class="op-topic">
+                <?php echo $thread["topic"] ?>
+            </div>
+            <hr class="thread-line">
+            <div class="op-text">
+                <?php echo $thread["text"] ?>
+            </div>
+            <hr class="thread-line">
+            <div class="op-info">
+                <div class="op-username">
+                    <?php echo $thread["username"] ?>
+                </div>
+                <div class="op-date">
+                    <?php echo $thread["date_created"] ?>
+                </div>
+            </div>
+
         </div>
 
-        <div class="comment-container" id="comment-container">
-
-
-        </div>
-
-        <div class="new-comment-form" id="new-comment-form">
+        
+        <div class="new-comment" id="new-comment-form">
 
         <?php
 
         if(isset($_SESSION["id"])) {
             echo 
-            '<label for="comment">Comment:</label>
-            <input type="hidden" name="thread-id" id="thread-id" value="' . $_GET["thread"] . '">
-            <input type="text" name="comment" id="comment-input" placeholder="Write your comment here..." required minlength="2" title="Required">
-            <input type="button" value="Send" onclick="insertComment()">';
+            '<input type="hidden" name="thread-id" id="thread-id" value="' . $_GET["thread"] . '">
+            <textarea type="text" name="comment" class="comment-input" id="comment-input" placeholder="Write your comment here..." required minlength="2" title="Required"></textarea>
+            <input type="button" class="standard-button comment" value="Comment" onclick="insertComment()">';
         }
         ?>
         
         </div>
+
+        <div class="comment-container" id="comment-container">
+        </div>
+
     </div>
 
     <?php include "./partial/_footer.php" ?>

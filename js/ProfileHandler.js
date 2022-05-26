@@ -2,10 +2,14 @@
 function activateForm() {
     document.getElementById("username").disabled = false;
     document.getElementById("email").disabled = false;
-    document.getElementById("submitbutton").disabled = false;
+    document.getElementById("submit-button").disabled = false;
+    document.getElementById("submit-button").className = "standard-button large";
+
     document.getElementById("old-password").disabled = false;
     document.getElementById("new-password").disabled = false;
     document.getElementById("edit-button").disabled = true;
+    document.getElementById("edit-button").className = "disabled-button small";
+
 }
 
 function validateUserInfo() {

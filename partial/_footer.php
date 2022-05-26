@@ -3,6 +3,10 @@
 
 echo 
 '<div class="footer" id="footer">
-    <p>Niklas Fredstam</p>
+    Niklas Fredstam
+    <br>
+    E-tjänster och webbprogrammering
+    <br>
+    2022-05-26
 </div>';
 ?>

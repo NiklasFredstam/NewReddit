@@ -71,7 +71,8 @@ class DB {
                 FROM Comments
                 INNER JOIN Users 
                 ON Users.user_id = Comments.user_id
-                WHERE thread_id=:id;';
+                WHERE thread_id=:id
+                ORDER BY comment_id DESC;';
         $result = false;
         if($stmt = $db->prepare($sql)) {
             $stmt->bindValue(':id', $id);

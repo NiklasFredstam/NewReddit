@@ -9,7 +9,7 @@ include "./php/bootstrap.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href='./css/style.css?v=43<?php time() ?>'>
+    <link rel="stylesheet" type="text/css" href='./css/style.css?v=<?php rand() ?>'>
     <script src="./js/IndexHandler.js"></script>	
 </head>
 
@@ -18,16 +18,16 @@ include "./php/bootstrap.php";
     <?php 
     include "./partial/_header.php"; 
     
-    echo '<div id="create-thread" class="center-flex">';
+    echo '<div id="create-thread" class="create-thread">';
     if(isset($_SESSION["id"])){
-        echo '<button class="new-thread-button" onclick="createThreadForm()">New Thread</button>';
+        echo '<button class="standard-button" onclick="createThreadForm()">New Thread</button>';
     }
     echo '</div>'
     ?>
 
     <div class="search-container">
 
-        <input type="text" id="filter" class="search-bar" placeholder="Search topics..." onkeyup="filterThreads(this.value)">
+        <input type="text" id="filter" class="search-bar" placeholder="Search..." onkeyup="filterThreads(this.value)">
 
     </div>
     <div class="center-flex">

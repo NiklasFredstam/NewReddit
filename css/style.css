@@ -2,13 +2,17 @@
     font-family: Georgia;
 }
 
+a {
+    text-decoration: none;
+}
+
 body{
     margin: 0px;
     background-color: rgb(146, 166, 252);
 }
 
 .header {
-    min-height: 140px;
+    min-height: 120px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -17,13 +21,17 @@ body{
 }
 
 .header-div {
-    width: 33%;
+    width: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .header-div.first {
     flex-direction: column;
+}
+
+.header-div.second {
+    width: 50%;
 }
 
 .profile-link {
@@ -39,7 +47,7 @@ body{
     font-size: 16px; 
     line-height: 16px; 
     padding: 10px; 
-    box-shadow: rgb(0, 0, 0) 3px 3px 6px 3px;
+    margin-right: 20px;
     border-radius: 200px; 
     font-family: Georgia, serif; 
     font-weight: normal; 
@@ -53,30 +61,33 @@ body{
     display: inline-block;
 }
 .header-button:hover {
-    background: #1C6EA4; 
+    background-image: linear-gradient(to right, rgb(91, 129, 255) 0%, rgb(20, 78, 117) 100%); 
 }
 .header-button:active {
-    background: #144E75; 
+    background-image: linear-gradient(to right, rgb(91, 129, 255) 0%, rgb(91, 129, 255) 100%); 
 }
 
-.search-container {
-    min-height: 100px;
+.header-line {
+    width: 85%;
+}
+
+.center-flex {
     align-items: center;
-    display: flex;
+    display: flex; 
     flex-direction: column;
     justify-content: center;
-}
-.search-bar {
-    width: 20%;
-    height: 40px;
-    font-size: x-large;
+    border-radius: 10px; 
 }
 
-a {
-    text-decoration: none;
+.create-thread {
+    margin-top: 20px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.new-thread-button {
+.standard-button {
     color: rgb(207, 207, 207); 
     font-size: 16px; 
     line-height: 16px; 
@@ -91,17 +102,70 @@ a {
     text-transform: none; 
     background-image: linear-gradient(to right, rgb(91, 129, 255) 0%, rgb(114, 151, 253) 50%, rgb(20, 78, 117) 100%); 
     box-shadow: rgb(0, 0, 0) 3px 3px 8px 3px; 
-    border: 1px solid rgb(28, 110, 164); 
+    border: 1px solid rgb(0, 0, 0); 
     display: inline-block;
 }
 
+.standard-button:hover {
+    background-image: linear-gradient(to right, rgb(91, 129, 255) 0%, rgb(20, 78, 117) 100%); 
+}
 
-.center-flex {
-    align-items: center;
+.standard-button:active {
+    background-image: linear-gradient(to right, rgb(91, 129, 255) 0%, rgb(91, 129, 255) 100%); 
+}
+
+.thread-form {
+    width: 60%;
     display: flex; 
     flex-direction: column;
     justify-content: center;
-    border-radius: 10px; 
+    align-items: center;
+}
+
+.thread-form-topic {
+    font-size: 16px; 
+
+    margin-bottom: 10px;
+    min-height: 30px;
+    border: 1px solid rgb(0, 0, 0); 
+    border-radius: 4px;
+    width: 40%;
+}
+
+.form-textarea {
+    font-size: 16px; 
+    margin-bottom: 10px;
+    min-height: 40px;
+    width: 70%;
+    border: 1px solid rgb(0, 0, 0); 
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.search-container {
+    min-height: 60px;
+    margin-top: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.search-bar {
+    width: 7%;
+    height: 30px;
+    font-size: 19px; 
+    transition: width 0.4s ease-in-out;
+    border: 1px solid rgb(0, 0, 0); 
+    border-radius: 4px;
+    background-image: url('../img/search.png');
+    background-position: 7px 7px;
+    background-repeat: no-repeat;
+    background-size: 20px,20px;
+    padding-left: 40px;
+}
+
+.search-bar:focus {
+    width: 20%;
 }
 
 .thread-container {
@@ -109,15 +173,17 @@ a {
     width: 60%;
     min-height: 15px;
     background-color: #2b2b2b;
-    border-radius: 25px;
+    border-radius: 8px;
     display: flex;
     flex-direction: column-reverse;
     align-items: left;
+    box-shadow: #2b2b2b 6px 6px 12px 6px; 
+
 }
 
 .thread {
     background-color: rgb(91, 129, 255);
-    color: rgb(207, 207, 207) !important; 
+    color: rgb(0, 0, 0) !important; 
     padding: 5px;
     width: 99%;
     margin-top: 3px;
@@ -132,25 +198,223 @@ a {
 
 .thread-topic {
     font-size: 19px; 
-    width: 75%;
+    width: 60%;
     padding-left: 15px;
+    margin-right: 10px;
     justify-self: right;
+    word-wrap: break-word;
 }
 
 .thread-username {
-    width: 15%;
+    width: 25%;
     padding-left: 15px;
+    margin-right: 10px;
     justify-self: right;
 }
 .thread-date {
     width: 10%;
     padding-left: 15px;
+    margin-right: 10px;
 }
 
 .no-match-message {
     font-size: 19px;
     color: rgb(207, 207, 207);  
 }
+
+.original-post {
+    background-color: rgb(91, 129, 255);
+    border: 3px solid rgb(0, 0, 0); 
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.thread-line {
+    width: 80%;
+}
+.op-topic {
+    text-align: center;
+    font-size: 25px;
+    width: 70%;
+    margin-right: 15%;
+    margin-left: 15%;
+    word-wrap: break-word;
+}
+.op-text {
+    margin-top: 7px;
+    margin-left: 10px;
+    margin-bottom: 7px;
+    font-size: 19px;
+    word-wrap: break-word;
+}
+.op-info {
+    margin-top: 10px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.op-username {
+    width: 78%;
+    margin-left: 2%;
+    text-align: left;
+}
+
+.op-date {
+    width: 18%;
+    margin-right: 2%;
+    text-align: right;
+}
+
+.new-comment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    width: 70%;
+}
+
+.comment-input {
+    margin-top: 10px;
+    font-size: 16px; 
+    min-height: 20px;
+    height: 20px;
+    width: 210px;
+    border: 1px solid rgb(0, 0, 0); 
+    border-radius: 4px;
+    transition: min-height 1s ease-in-out,width 0.4s ease-in-out;
+}
+
+.comment-input:focus {
+    width: 65%;
+    min-height: 100px;
+}
+
+.standard-button.comment {
+    margin-top: 10px;
+    width: 90px;
+}
+
+.comment-container {
+    width: 60%;
+    margin-top: 10px;
+    min-height: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.comment {
+    background-color: rgb(118, 150, 255);
+    margin: 5px;
+    min-height: 30px;
+    width: 30%;
+    border: 1px solid rgb(0, 0, 0); 
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.comment-text {
+    word-wrap: break-word;
+}
+.comment-info {
+    margin-top: 2px;
+    display: flex;
+    flex-direction: row;
+}
+.comment-username {
+    width: 48%;
+    margin-right: 2px;
+    text-align: left;
+    font-size: 10px;
+}
+.comment-date {
+    width: 48%;
+    margin-right: 2px;
+    text-align: right;
+    font-size: 10px;
+}
+
+.user-form {
+    width: 35%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(91, 129, 255);
+    border: 3px solid rgb(0, 0, 0); 
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.form-labels {
+    height: 300px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    justify-content: right;
+    align-items: top;
+}
+
+.form-label {
+    margin-top: 19px;
+    margin-right: 10px;
+}
+
+.edit-user-form {
+    margin-top: 7px;
+    height: 300px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-form-input {
+    margin-top: 16px;
+    border-radius: 3px;
+}
+
+.standard-button.small {
+    margin-top: 30px;
+    width: 60px;
+}
+.standard-button.large {
+    margin-top: 10px;
+    width: 120px;
+}
+
+.disabled-button {
+    color: rgb(174, 174, 174); 
+    font-size: 16px; 
+    line-height: 16px; 
+    padding: 10px; 
+    border-radius: 200px; 
+    font-family: Georgia, serif; 
+    font-weight: normal; 
+    text-decoration: none; 
+    font-style: normal; 
+    font-variant: normal; 
+    text-transform: none; 
+    background-image: linear-gradient(to right, rgb(66, 66, 66) 0%, rgb(147, 147, 147) 50%, rgb(61, 61, 61) 100%); 
+    box-shadow: rgb(0, 0, 0) 3px 3px 8px 3px; 
+    border: 1px solid rgb(0, 0, 0); 
+    display: inline-block;
+}
+
+.disabled-button.large {
+    margin-top: 10px;
+    width: 120px;
+}
+
+.disabled-button.small {
+    margin-top: 30px;
+    width: 60px;
+}
+
 
 
 a:link {
@@ -169,10 +433,12 @@ a:hover {
 }
 
 .footer {
+    margin: 20px;
     min-height: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    text-align: center;
 }
