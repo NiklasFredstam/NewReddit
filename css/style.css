@@ -57,7 +57,7 @@ body{
     text-transform: none; 
     background-image: linear-gradient(to right, rgb(91, 129, 255) 0%, rgb(114, 151, 253) 50%, rgb(20, 78, 117) 100%); 
     box-shadow: rgb(0, 0, 0) 3px 3px 8px 3px; 
-    border: 1px solid rgb(28, 110, 164); 
+    border: 1px solid rgb(0, 0, 0); 
     display: inline-block;
 }
 .header-button:hover {

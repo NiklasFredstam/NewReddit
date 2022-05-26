@@ -12,7 +12,7 @@ if($threads === false) {
 if(isset($_GET["filter_text"])) {
     $filter = $_GET["filter_text"];
     foreach($threads as $t) {
-        if(strpos($t['topic'], $filter) !== false) {
+        if(strpos(strtolower($t['topic']), strtolower($filter)) !== false) {
             $toreturn .=
             "<a class='thread' href='./thread.php?thread=" . $t["thread_id"] . "'>
                 <div class='thread-topic'>"

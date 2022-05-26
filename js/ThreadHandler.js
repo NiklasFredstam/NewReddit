@@ -12,6 +12,7 @@ function insertComment() {
     xmlhttp.send();
 
     sleep(2000).then(() => {
+        document.getElementById("comment-input").value = "";
         loadComments(id)
     });
 

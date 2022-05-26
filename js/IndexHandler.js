@@ -1,5 +1,5 @@
 function filterThreads(val) {
-
+    filtertxt = val.toLowerCase();
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function() {
         if (this.readyState==4 && this.status==200) {
@@ -8,7 +8,7 @@ function filterThreads(val) {
     }
     getop = "./php/update_thread_list.php";
     if(val.length != 0) {
-        getop += "?filter_text=" + val
+        getop += "?filter_text=" + val;
     }  
     xmlhttp.open("GET",getop,true);
     xmlhttp.send();
