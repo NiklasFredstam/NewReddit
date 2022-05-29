@@ -244,7 +244,9 @@ body{
 }
 .op-text {
     margin-top: 7px;
-    margin-left: 10px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-bottom: 7px;
     font-size: 19px;
     word-wrap: break-word;
@@ -355,7 +357,7 @@ body{
     width: 30%;
     display: flex;
     flex-direction: column;
-    text-align: right;
+    text-align: center;
     justify-content: right;
     align-items: top;
 }
@@ -430,6 +432,38 @@ a:active  {
 
 a:hover {
     color:rgb(188, 188, 188);
+}
+
+.login-form {
+    margin-top: 90px;
+    height: 300px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+.login-form-label {
+    font-size: 22px;
+}
+
+.login-form-input {
+    font-size: 18px;
+    border-radius: 2px;
+}
+
+.register-form {
+    margin-top: 90px;
+    height: 300px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+.register-form-label {
+    font-size: 22px;
+}
+
+.register-form-input {
+    font-size: 18px;
+    border-radius: 2px;
 }
 
 .footer {

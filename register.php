@@ -28,15 +28,17 @@ if(isset($_SESSION["id"])) {
             echo $_GET["errormsg"];
         }
         ?>
-        <form name="registration" action="./php/register_post.php" onsubmit="checkRegistration()" method="post">
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" placeholder="Enter you prefered username" required minlength="4">
-            <label for="email">E-mail:</label>
-            <input type="email" name="email" id="email" placeholder="jane@doe.com" required>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" placeholder="Enter a password" pattern="(?=.*\d)(?=.*[a-zåäö])(?=.*[A-ZÅÄÖ]).{8,20}" required title="Must contain at least one numeric value, one lowercase letter and one uppercase letter">
-            <input type="submit" value="Send" >
-        </form>
+        <div class="user-form">
+            <form name="registration" class="register-form" action="./php/register_post.php" onsubmit="checkRegistration()" method="post">
+                <label class="register-form-label" for="username">Username:</label>
+                <input class="register-form-input" type="text" name="username" id="username" placeholder="Enter you prefered username" required minlength="4">
+                <label class="register-form-label" for="email">E-mail:</label>
+                <input class="register-form-input" type="email" name="email" id="email" placeholder="jane@doe.com" required>
+                <label class="register-form-label" for="password">Password:</label>
+                <input class="register-form-input" type="password" name="password" id="password" placeholder="Enter a password" pattern="(?=.*\d)(?=.*[a-zåäö])(?=.*[A-ZÅÄÖ]).{8,20}" required title="Must contain at least one numeric value, one lowercase letter and one uppercase letter">
+                <input type="submit" class="standard-button large" value="Send" >
+            </form>
+        </div>
 
     </div>
 
